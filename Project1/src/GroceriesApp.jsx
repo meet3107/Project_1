@@ -1,22 +1,24 @@
-import { useState } from "react";
 
-import  {products} from "./products.js";
+import  {products} from "./data/products.js";
 
-export default function GroceriesApp(pic, id, productName, brand, price, quantity){
+import InventoryCard from "./InventoryCard.jsx";
+import "./App.css"
+
+export default function GroceriesApp(){
 
     return(
-        
-        
-        <div className="Listing" >
-            <img src={pic} alt="product" width="150" height="70%" />
-            <h2>{id}</h2>
-            <h3>{productName}</h3>
-            <h4>{brand}</h4>
-            <h5>${price}</h5>
-            <h6>{quantity}</h6>
-            
-
-           
+        <div className="Inventory-Container">
+            {products.map((i) => (
+                <div key={i.id} className="Inventory-Card">
+                    <InventoryCard
+                    productName={i.productName}
+                    brand={i.brand}
+                    quantity={i.quantity}
+                    image={i.image}
+                    price={i.price}
+                    />
+                    </div>
+            ))}
         </div>
     )
 }
