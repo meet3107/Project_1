@@ -9,24 +9,30 @@ import CartList from "./CartList.jsx";
 export default function GroceriesApp(){
     
 
-
+    //state to manage and update from products.js
     const [toCart, setToCart ] = useState([]);
 
+    
+    //function to add item to cart 
     const addToCart = (item) => {
         setToCart((prevData) => {
             return([...prevData, {...item,id: crypto.randomUUID()}])
         })
     }
+    
+    // function to remove one item from cartlist
     const removeItem = (id) => {
         setToCart((prevList) => {
           return prevList.filter((i) => i.id !== id);
         });
       };
+      // function to empty whole cart
       const removeAllItem = (id) => {
         setToCart((prevList) => {
           return prevList.filter((i) => i.id == id);
         });
       };
+      //function to total price by replacing them from string
       function sumPrices(products) {
         return products.reduce((total, product) => {
           const price = parseFloat(product.price.replace('$', ''));
@@ -38,11 +44,13 @@ export default function GroceriesApp(){
 
 
     return(
-
+        //Groceries app container
         <div className="GroceriesApp-Container">
             <div className="Inventory-Container">
+                {/* map through each items in products array  */}
             {products.map((i) => (
                 <div key={i.id} className="Inventory-Card">
+                    {/* Inventory card component  */}
                     <InventoryCard
                     productName={i.productName}
                     brand={i.brand}
@@ -57,6 +65,7 @@ export default function GroceriesApp(){
             </div>
             
 
+            {/* call cartlist component */}
             <CartList
                 toCart={toCart}
                 removeItem={removeItem}
