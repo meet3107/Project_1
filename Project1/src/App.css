@@ -15,7 +15,7 @@
 .CartList-Container {
   width: 25%;
   justify-content: center;
-  border: 1px solid white;
+  /* border: 1px solid white; */
 }
 
 .CartList-Card {
@@ -39,7 +39,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  border: 1px solid white;
+  /* border: 1px solid white; */
 }
 
 .Inventory-Card {
